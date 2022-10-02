@@ -1,0 +1,16 @@
+CJ! We intercepted a communication from those Ballas dogs!
+It is just a number, but we think it hides the combination for their secret vault.
+They use some sort of RSA, and we got their public key
+	(17,5555555555931888888891173)
+
+this is what we captured:
+	2439412161939172626535641
+
+What's the combination, CJ?!
+
+{
+P.s. BONUS: If you (the student) caught the reference, translate from integers to ascii the combination! 
+(2 digits = 1 character. For example: EXAMPLE = 69886577807669)
+	E  X  A  M  P  L  E
+	69 88 65 77 80 76 69
+}

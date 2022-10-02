@@ -1,0 +1,17 @@
+EXERCISE
+
+Let h: {0, 1}^* -> {0, 1}^n be a hash function that is second-preimage and collision resistant. Let us now consider the hash function h': {0, 1}^* -> {0, 1}^(n+1) built from h() as follows:
+
+h'(x) = 0||x, if x in {0, 1}^n
+h'(x) = 1||h(x), otherwise.
+
+Argue whether h'() is pre-image, second-preimage, and collision resistant.
+
+SOLUTION
+
+The h'() hash function is not pre-image resistant. If x in {0, 1}^n, then x can be easily computed from h'(x) by simply removing the most significant bit (that is equal to 0).
+
+The h'() has function is second-preimage and collision resistant. The proof is by contradiction. Assume exist x1 and x2, x1 <> x2, s.t. h'(x1) = h'(x2). We have two cases:
+
+a) The most significant bit is 0, then x1 = x2, which is a contradiction because by assumption x1 and x2 are different;
+b) The most significant bit is 1, then h(x1) = h(x2), which is a contradiction because h() is second-preimage and collision resistant.

@@ -1,0 +1,5 @@
+- Download the KALI VirtualBox image  (3.1 Giga) at the following 
+https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/
+
+For any question contact:  francesco.mercaldo@unimol.it
+ 
