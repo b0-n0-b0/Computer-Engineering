@@ -1,0 +1,8 @@
+- Import the restaurants datasets from the restaurants.json file.
+- Write a MongoDB query to count the total number of documents.
+- Write a MongoDB query to display all the restaurant which is in the borough Bronx
+- Write a MongoDB query to display the next 5 restaurants after skipping first 5 which are in the borough Bronx
+- Write a MongoDB query to find the restaurants that achieved a score, more than 80 but less than 100
+- Write a MongoDB query to find the restaurants which locate in a latitude value less than -95.754168.
+- Write a MongoDB query to find the restaurants that do not prepare any cuisine of 'American' and their grade score more than 70 and latitude less than -65.754168
+- Write a MongoDB query to find the restaurants which do not prepare any cuisine of 'American ' and achieved a grade point 'A' not belongs to the borough Brooklyn.The document must be displayed according to the cuisine in descending order.

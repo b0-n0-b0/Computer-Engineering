@@ -1,0 +1,12 @@
+Generate a private key protected by a password:
+	
+	openssl genrsa -aes128 -f4 -out key.pem
+	(a prompt asking the password will appear)
+man page: https://www.openssl.org/docs/man1.1.1/man1/openssl-genrsa.html
+
+Extract a public key from a file:
+	openssl rsa -in key.pem -outform PEM -pubout -out public.pem
+man page: https://www.openssl.org/docs/man1.1.1/man1/openssl-rsa.html
+
+NOTE: Opening a file protected by a password in C/C++ is no different from opening an unprotected file. 
+A prompt asking for the password will appear through the stdout after the f.open() instruction is executed.

