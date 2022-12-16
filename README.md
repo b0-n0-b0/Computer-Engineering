@@ -25,7 +25,7 @@ The exams shared by each curricula
 #### Computer Systems and Networks
 - [Cloud Computing (9 cfu)](https://esami.unipi.it/esami2/programma.php?ad=75234&aa=2022)
 - [Advanced Network Architectures and Wireless Systems (9 cfu)](https://esami.unipi.it/esami2/programma.php?ad=75226&aa=2022)
-#### Cibersecurity
+#### Cybersecurity
 - [Formal Methods for Secure Systems (9 cfu)](https://esami.unipi.it/esami2/programma.php?ad=75302&aa=2022)
 - [System and Network Hacking (9 cfu)](https://esami.unipi.it/esami2/programma.php?ad=75312&aa=2022)
 
