@@ -5,3 +5,5 @@
 3. Calculate the quantum vector after the mesurament of |11>
     [0 0 0 1] (is a column vector so translate it)
 4. Calculate the matrix U given by the union of Rx and S (do the tensor product not the matrix multiplicantion !!!!!!)
+
+5. Implement the circuit with qiskit in python (see Code.py for solutions)
