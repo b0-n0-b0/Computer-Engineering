@@ -1,0 +1,3 @@
+- The pdf in this folder contains exam question with answer
+- Quantum folder contains some exam with and without answer
+- Thanks to Federico Casu for the question files with his answer. Keep in mind the answer may not be totally correct (his words not mine)
