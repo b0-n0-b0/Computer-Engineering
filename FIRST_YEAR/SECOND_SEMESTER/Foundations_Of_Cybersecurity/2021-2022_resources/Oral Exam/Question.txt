@@ -1,0 +1,154 @@
+SETTEMBRE
+1. teorema di shannon - Cifrario perfetto + dimostrazione		OK																		
+2. Differenza tra unsigned int e signed int nella condizione dell'overflow	OK
+
+1. Diffie-hellman + perchè si lavora in un sottogruppo di Zp* 	OK
+2. Come evitare overflow negli int unsigned: a+b + condizioni da verificare negli int e negli unsigned	OK
+
+1. Perfect forward secrecy (Definizione + esempio di come si può ottenere)  OK
+2. Sicurezza RSA + perchè l'algoritmo base non è sicuro	OK
+
+1. Proprietà di una funzione Hash + attacchi + Merkle Damgard (Concetto generale + schema se si ricorda)	OK
+2. OS command injection		OK
+
+---- 1 APPELLO INVERNALE ----
+1. ECB
+2. Somma tra int
+
+---- 2 APPELLO INVERNALE ----
+
+1. Quali sono le informazioni minime che ci aspettiamo di trovare dentro un certificato?
+ quali sono i controlli da fare prima di utilizzarlo? (Controllo sull'integrità poi check sullo stato revocato/valido)
+ Scambio di messaggi CA-Utente che effettuano il controllo di validità (M1 A->CA: timestampA||idB, M2 CA->A: {timestampA, RESPONSE}Kprivca
+ il timestamp inviato da A svincola dalla sincronizzazione degli clock)			OK
+2. Come si effettua la sanitizzazione di una somma tra unsigned integer? (a+b)		OK
+
+1. Protocollo Diffie-Hellman, come funziona? Si descriva il suo funzionamento e come stabilire i parametri necessari. (g deve essere una permutazione su Zp, deve generare tutti i valori, a e b invece devono essere grndi perchè devono permettere a g^a di superare p altrimenti sarebbe facilmente fattorizzabile tramite la bruteforce) Noi in realtà non si va mai ad usare DH in Zp* ma lo applichiamo in un suo sottoinsieme, come mai? Non dovrebbe diminuire la sicurezza? (Pohlig-Hellman, con complessità o(log|g|)) 		OK
+2. Sanitizzazione di somma di interi con segno	OK
+	
+1. Definizione di funzione Hash sicura, quali proprietà deve possedere? Imposta e calcola la probabilità di un Birthday attack, con la complessità. Schema Merkle-Daamgard.	OK
+2. SQL Injection, quali sono le tecniche per contrastarlo?		OK
+
+DOMANDE VERONICA 2021
+
+- CBC		OK
+- RSA key key-generation	OK
+- Perfect cipher		OK
+- Shannon's theorem 	OK
+- a^x mod n (multiply, generalizzazione)	OK
+- Funzioni hash (3 proprietà, attacchi alle varie proprietà)	OK
+- Guessing attack	OK
+- Birthday attack (paradosso del compleanno)	OK
+- Black box
+- Block cipher: per costruire cifrario a caratteri, modalità -> OFB, CFB, CTR; (dimostrazione che OFB non può essere un cifrario perfetto NON SPIEGATO)	OK
+- Block cipher: costruzione cifrario perfetto, mostrare che non è possibile in pratica (permutazioni...); che permutazione implementa un cifrario?	OK
+- Dictionary attack (è un kpa)		OK
+- Diffie-hellman (per scambio di chiavi) 	OK
+- Perfect forward secrecy		OK
+- Funzioni hash: schema di Merkle-Damgaard, funzioni di compressione	OK
+- RSA: algo generazione della chiave	OK
+- schema modalità CBC	OK
+- differenze CBC/ECB	OK
+- si può usare CBC con cifrari asimmetrici? (sì)	OK
+- cifrario perfetto		OK
+- RSA scolastico (rsa plain): perché non si usa in pratica (malleabile->come viene sfruttata questa caratteristica, deterministico->pt sempre stesso ct e problemi se lo spazio dei messaggi è piccolo poiché si può fare un attacco a forza bruta sui messaggi invece che sulla chiave, problemi con i moduli se tanti utenti usano lo stesso modulo, se piccoli esponenti)	OK
+- teorema Shannon's	OK
+- Da Block Cipher a stream cipher, Enryption modes		OK
+- parametro "e" in RSA (?) come si determina, a^x, square&multiply (esponente deve contenere il minor numero di 1-calcolo combinatorio(?)) 		OK
+- cifrari a caratteri: approssimazione block cipher, caratteristiche che deve avere un PRG per essere sicuro; LFSR: predicibile		OK
+- Proprietà funzioni Hash, guessing attack (funzionamento e complessità)	OK
+- protocollo Diffie-Hellman e perché ritenuto rivoluzionario->non prevedeva che A e B condividessero un segreto a priori, quindi no segreti a lungo termine  OK
+- Logaritmo discreto in campi finiti
+- Cifratura multipla (2E, 3DES): quanto conviene?	Ok
+- Man-in-the-middle Attack in Diffie-helman 	OK
+- Schema di Merkle-damgard (hash più grandi da hash piccoli(?)), Come si realizza la funzione h(piccolo)	OK
+- MAC: costruzione HMAC
+- DLP non generici, Zp*, vantaggio di passare alle curve ellittiche?
+- cifrario (a blocchi) perfetto, perché non realizzabile in pratica
+- Block cipher, perché dimensione blocco almeno (16*4?) bit?
+- Da cosa dipende la dimensione del dizionario nel dictionary attack (da 2^n)
+- Qual è il problema della PFS		OK
+
+
+Secure coding
+	- Come sanitizzare sottrazione/somma interi con segno 	x3 OK
+	- Attacchi cross-size scripting (XSS): reset e..., Che tipo di attacco si può portare avanti sfruttando un server fallato?
+	- analisi debolezze pezzo di codice
+	- SQL injection, approcci duali da evitare	x2
+	- Buffer dell'overflow	x2 OK
+	- Meccanismi per code injection
+	- XSS sfruttando i cookie, che tipi di attacchi si possono fare?
+	- Command Injection
+	- Cross-site scripting
+
+
+ARGOMENTI RGGRUPPATI:
+- Shannon. 	x5			FATTO
+- Diffie-Hellman, Operazioni su Z*p e Man in the middle problem.	 x4
+- Perfect Forward Secrecy, problemi e vantaggi.	 x3
+- RSA, key-generation, Problema RSA-Plain + soluzion, decryption e encryption.	x6
+- Hash functions: 3-proprietà, Merle-Damgaard scheme, funzioni di compressione, guessing attack, birthday attack.	x7
+- Certificati: Informazioni minime, operazioni di verifica 		
+- Cifrari a blocchi ed Encryption modes: CBC, ECB, OFB e CTR.	x10
+- DES, 2-DES e 3-DES
+- Square and multiply
+- MAC e HMAC
+- DLP sulle curve ellittiche
+- Dictionary Attack e Rainbow-Table Attack		
+- Elgamal Encryption scheme						FATTO
+- DH sulle curve ellittiche						FATTO
+- RNG: proprietà per la sicurezza
+
+ESERCIZI SCRITTO Secure Coding
+
+- Sanitizzazione somma tra interi senza segno
+- Sanitizzazione moltiplicazione tra interi senza segno
+- Reallocazione di un vector
+- Tautology attack
+- Path traversal & Canonicalization
+- Buffer overflow con gets
+- Overflow su strcpy
+- Overflow di lettura su printf
+
+Negli ultimi appelli ha messo -> Path canonicalization, tautology, iterator invalidation. D'estate invece: Buffer overflow e strcpy -> Probabile: Sanitizzazione interi!!!
+
+
+23/02/22
+
+prima persona [2020-2021]:
+1) teorema di Shannon, enunciato e dimostrazione 
+2) perfezione di un cifrario a blocchi. cosa mi serve per determinare che sia perfetto?
+   Ip: dim blocco 128 e dim chiave 128 generata randomicamente, questo cifrario può essere perfetto oppure no?
+		NO: per essere perfetto dovrebbe realizzare tutte le permutazioni 2^N, numero di chiavi uguali a quello di tutte le possibili permutazioni.
+3) spiegare le vulnerabilità legate alle funzione di libreria, scanf e printf che hanno un numero di parametri variabili
+
+fede:
+1) cifrario DES quando si usa? per quale motivo il 3DES è sicuro e la 2DES no? complessita di storage? complessità sui dati? trascurabile quella sui dati
+   se usassi 4DES? Cioè perchè non si va oltre a 3DES? 
+2) il problema della canonizzazione dei nomi nel file system? limite whitelist e blacklist?
+
+
+terza persona [2020-2021]
+1) algoritmo di generazione delle chiavi in RSA
+2) il problema del wraparound come viene trattato negli int e nehli unsigned? che differenza c'è? perchè si tratta in maniera diversa?
+
+
+quarta persona [2021-2022]
+1) problema della perfect forward secrecy?
+2) sanitizzazione di somma tra interi con segno
+
+- CBC and error propagation
+- Argue whether CBC can be used with public key encryption schemes
+- Kerberos
+- RSA keys generation 
+- RSA encryption and decryption performance improvements
+- Multiple encryption (2DES)
+- Shannon’s definition of perfect cipher
+- Shannon’s theorem
+- Perfect forward secrecy
+- Properties of a secure hash function
+- Birthday attack
+- Certificates (including OCSP, CRL and Cross certification)
+- When is a certificate considered valid?
+- Kerberos delegation (proxy and forwardable tickets)
+- Discuss about authenticated encryption schemes and argue about their security
