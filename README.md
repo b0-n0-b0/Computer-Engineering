@@ -31,6 +31,7 @@ The exams shared by each curricula
 
 ## Manteiners
 - Edoardo Geraci
+- Fabio Piras
 ## Contributors
 - Giovanni Marrucci
 - Anna Fabbri
