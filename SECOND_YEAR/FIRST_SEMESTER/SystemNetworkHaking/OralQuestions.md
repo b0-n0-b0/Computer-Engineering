@@ -1,0 +1,50 @@
+# Question SNH
+## Lettieri:
+- #### Attack on Heap: DL/Metadata exploitation
+    - Heap alignment (16 bytes/word)
+    - Chunk schema (draw)
+    - What happen after the free (double linked list)
+    - Vulnerability in DLMalloc
+    - What the PREV_INUSE bit is used for, which chunk references (the above one)
+    - Arbitrary write and its consequences
+- #### Others attack on Heap
+    - Double free
+    - Use after free (what happens?)
+- #### Stack canaries
+    - What are they, how are they used
+    - Global copy, where is it (Thread control block)
+    - Canary only above the %RIP or there is something else to protect (%RBP), are there metadata in the frame?
+    - What can we do to protect the dim of the array against overflow (use fortify source)
+    - What does fortify source does (puts the array immediately above the canary and move the local var above it)
+- #### Format string
+    - %s what does it do
+    - From where the printf takes the arguments (32b from stack, 64b %rdi %rsi %rdx %rcx %r8, %r9 and then from stack)
+    - How can we control what to take specifically (random access %m$x where m is a number)
+    - How can an attacker control the format string/What happens if the buffer is in the stack
+    - %x how to use it to our advantage
+    - Example on how to use %x to defeat PIE
+- #### Dynamic libraries
+    - Why use them
+    - What does the loader do
+    - What is in the GOT
+    - What happen with lazy binding? What is it in the relative GOT entry
+    - How can we exploit this? (GOT not write protected --> redirect code)
+    - If there is full RELRO reading the GOT is still usefull? (yes, you can still leak address to defeat ASLR)
+- #### ASLR and PIE
+    - What are they
+    - In ASLR how are things loaded what is random (load in blocks, base address is random)
+    - What are the requirements to use ASLR 
+    - Without ASLR is there something random (yes, dyn lib, .bss)
+- #### Containers (CE)
+    - Security analysis, are they secure
+    - Capabilities how are they implemented and how do they work
+    - Namespace how do they work
+    - In namespace does a process have now two pid? 
+## Perazzo:
+- #### Same origin policy (CE)
+    - Is script loading allowed (yes)
+    - Case of iframe, what is not allowed (external page cannot access embedded content like DOM)
+- #### View state asp.net
+    - Session implementation
+    - Can an adversary modify it (not without knowing secret)
+    - The adversary can still do something else, what (HMAC does not prevent replay)
