@@ -35,3 +35,6 @@ The exams shared by each curricula
 ## Contributors
 - Giovanni Marrucci
 - Anna Fabbri
+- Giacomo Volpi
+- Guillaume Quint
+- Antonino Nigro
