@@ -1,0 +1,23 @@
+Simulated schema of robot
+TMR, explain the idea an the workin condition -> reference to single module and comparison
+What's availability 
+Markovian chain description of the TMR with various rates
+What are the timed automata?
+	whith example
+Mobius tool explan the various compomnet(study model etc...)
+what's data leakage, what are the different type, how do you get data leakage
+what's Stride
+Explain Bizantine fault
+Exponential failure law -> 
+what's risk analysis?
+FMU
+  ->launch LFR simulation
+what's process algebras?
+	-> action of internal simulation
+Trace equivalence
+N-version programming
+what's  and how does pvs work  
+what's abstract semantic and what does it bring?
+what are fault tree
+what's FMEA
+Advice on Mobius
