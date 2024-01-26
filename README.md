@@ -38,3 +38,4 @@ The exams shared by each curricula
 - Giacomo Volpi
 - Guillaume Quint
 - Antonino Nigro
+- Mirco Concu
