@@ -1,4 +1,4 @@
-# Question SNH
+# Questions SNH
 ## Lettieri:
 - #### Attack on Heap: DL/Metadata exploitation
     - Heap alignment (16 bytes/word)
@@ -7,6 +7,8 @@
     - Vulnerability in DLMalloc
     - What the PREV_INUSE bit is used for, which chunk references (the above one)
     - Arbitrary write and its consequences
+    - What can we do if the NX bit is not enabled on the heap
+    - Boundary tags
 - #### Others attack on Heap
     - Double free
     - Use after free (what happens?)
@@ -26,7 +28,8 @@
 - #### Dynamic libraries
     - Why use them
     - What does the loader do
-    - What is in the GOT
+    - What is in the GOT, who builds it and who populates it
+    - How can an attacker exploit it
     - What happen with lazy binding? What is it in the relative GOT entry
     - How can we exploit this? (GOT not write protected --> redirect code)
     - If there is full RELRO reading the GOT is still usefull? (yes, you can still leak address to defeat ASLR)
@@ -35,16 +38,67 @@
     - In ASLR how are things loaded what is random (load in blocks, base address is random)
     - What are the requirements to use ASLR 
     - Without ASLR is there something random (yes, dyn lib, .bss)
-- #### Containers (CE)
+- #### RELRO
+    - Difference between full and partial
+    - Why does this difference exists
+    - How the read only is done (`mprotect()` called by the dLoader)
+- #### Pointer Guard
+    - CFI wha is it, how does it work
+    - What are forward/backward jmp
+### CE section
+- #### Containers
     - Security analysis, are they secure
     - Capabilities how are they implemented and how do they work
     - Namespace how do they work
     - In namespace does a process have now two pid? 
-## Perazzo:
-- #### Same origin policy (CE)
+    - What does `charoot()`
+- #### SymLink
+    - What happens when we follow a symlink to a non existing file
+- #### SUID
+    - What are the SUID programs, why do attackers want to exploit them
+    - Possible `umask()` bugs
+- #### Kernel
+    - Goals of kernel exploit
+    - Return to userspace
+    - Mitigation (SMEP & SMAP)
+    - How to defeat SMEP (use ROP)
+
+## Perazzo (CE only):
+- #### Same origin policy
+    - What is it and what does prevent
     - Is script loading allowed (yes)
     - Case of iframe, what is not allowed (external page cannot access embedded content like DOM)
+    - What is CSP, how does it relate to SOP
 - #### View state asp.net
     - Session implementation
     - Can an adversary modify it (not without knowing secret)
     - The adversary can still do something else, what (HMAC does not prevent replay)
+- #### Captcha
+    - What are they and how they used
+    - How do they work
+- #### Browser history
+    - What goes there, how can it be exploited
+- #### Session fixation attack
+    - What is it and how does it work
+    - How to prevent/mitigate
+    - If the token is sent into the body, is it secure? (No, use httponly and secure flags)
+    - How to use defense in dept to prevent it (session upgrade -> token change)
+- #### SQL injection
+    - What is the original sin (No input validation)
+    - Make examples (SELECT * FROM users WHERE username='...' AND password = '...', with username = `Admin' -- `)
+    - Black filters, can we defeat it, what if `--` is blacklisted
+    - If the program does and escape of some chars like `'`, how can we attack it? (Encoding problem like GBK)
+    - Input injection, how to exploit it and how to lear the struct of the query
+- #### XSS
+    - Types of XSS
+    - how to do a XSS with the POST method
+    - DOM based XSS, how does it work and how can it be exploited
+- #### Authentication
+    - Change password functionality, problems with frequent replace
+    - Password correlation issue
+    - What can we do to avoid password correlation
+- #### Session handling
+    - What are some good practice
+    - How to ensure the security of the session token
+    - What tech can I use to cipher it
+    - MITM how can we prevent it
