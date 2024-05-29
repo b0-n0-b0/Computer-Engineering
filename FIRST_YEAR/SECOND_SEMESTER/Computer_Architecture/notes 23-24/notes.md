@@ -555,7 +555,7 @@ In this technique, switches between threads are made after each instruction, res
 
 This is a variation of fine-grained multithreading, that arises naturally when fine-grained multithreading is implemented on top of a multiple-issue dynamically scheduled processor. It exploits thread-level parallelism to hide long-latency events, increasing the usage of the functional components. Techniques such as register renaming, and dynamic scheduling allow multiple instructions from independent threads to be executed without regards of dependencies among them. The follow image offers a visual representation of the typical execution:
 
-![Simultaneously Multithreading](../CA/img/SMT.png)
+![Simultaneously Multithreading](./img/SMT.png)
 
 If applied in a out-of-order processor, *per-thread tables* for register renaming and separate PCs helps to avoid conflicts between threads and, at the same time, to increase the performance of the processor.
 
