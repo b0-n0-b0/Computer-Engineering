@@ -13,6 +13,13 @@
     - ML problem
     - how to model SC and SD graph
 #### APIT
+#### Pastry - Routing -> calcolare sequenza indirizzo
+#### Publish and Subscribe -> descrivere entrambe le fasi - Parte non vista a lezione
+#### Localizzazione range free(?) -> spiegare tutti gli step
+#### Domanda su progetto - Algoritmo APIT
+#### Pastry - Routing -> individuazione nodi in una rete fisica
+#### Localizzazione -> range free e range based
+#### Possibili domande parte di Cima, non si sentiva niente
 ## Vecchio
 #### DV-Hop
 #### Pastry
