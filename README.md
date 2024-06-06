@@ -39,3 +39,4 @@ The exams shared by each curricula
 - Guillaume Quint
 - Antonino Nigro
 - Mirco Concu
+- Giovanni Enrico Lioni
