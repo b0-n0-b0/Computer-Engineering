@@ -40,3 +40,4 @@ The exams shared by each curricula
 - Antonino Nigro
 - Mirco Concu
 - Giovanni Enrico Loni
+- Edoardo Pantè
