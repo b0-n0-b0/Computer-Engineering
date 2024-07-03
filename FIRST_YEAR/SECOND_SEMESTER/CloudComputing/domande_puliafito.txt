@@ -1,0 +1,65 @@
+Domande Puliafito:
+
+a) Hadoop 1.0
+
+-> Questa versione di Hadoop presenta semplicemente due layer e sono: MapReduce per il data processing e HDFS per il data storage. Abbiamo Job, Task, Slot, Job Tracker e Task Tracker. In particolare Slot, JT e TT presentano dei problemi. JT riesce a monitore non più di 4.000 nodi e 40.000 tasks inoltre rappresenta un single point of failure; gli Slot d'altra parte possono acquisire risorse che non necessitano e ciò rappresenta uno spreco.
+
+Da Hadoop 2.0 è stato aggiunto un layer aggiuntivo (YARN) responsabile della gestione delle risorse del cluster. YARN presenta due servizi che vengono eseguiti come daemons: resource manager (ve ne è uno per cluster) responsabile della gestione delle risorse del cluster e node managers (ve ne è uno per nodo) responsabile dell'esecuzione dei containers e del monitoraggio dell'utilizzo delle risorse da questi medesimi.
+
+
+b) Spark Transformations and Actions
+
+-> Sono le due operazioni supportate dagli RDD in Spark. 
+Le Transformations permettono di creare il logical plan. 
+Le Actions permettono di triggerare la computazione.
+
+Le Transformations creano un nuovo RDD da un RDD esistente. Non vanno ad effettuare la computazione del risultato poiché sono "lazy"; la computazione avviene nel momento in cui una Action necessita di dover ritornare un risultato al program driver. Alcuni esempi di Transformations sono: distinct e filter.
+
+Le Actions calcolano il risultato a partire da una serie di Transformations. Ne abbiamo di tre tipi e sono relative a: view data, collect data e write to output. Alcuni esempi di Actions sono: count, max e min, first, ecc.
+
+c) Speculative Execution
+
+-> Dato che i task possono essere non efficienti a causa di degradazione hardware oppure configurazioni software errate sono nate le Speculative Execution. L'application master tiene traccia del progresso di tutte le task dello stesso tipo (map e reduce) all'interno di un job. A questo punto esegue "speculative duplicate tasks" per quella piccola porzione di task che sono significativamente più lente rispetto alla media. A questo punto viene presa quella che finisce prima o l'originale o "la speculative". Il prezzo da pagare sono una piccola percentuale di risorse utilizzate in più.
+
+d) Descrivi la slide di shuffle and sort 
+
+e) Parlami di task, job, stage e application in Spark
+
+f) Lettura/scrittura HDFS con schema
+
+g) YARN fair e delay scheduler
+
+-> Il fair scheduler non necessita di dover riservare un quantitativo di capacità in quanto bilancia dinamicamente le risorse fra tutti i job in esecuzione. Il delay scheduling è supportato sia dal fair che dal capacity scheduler. Sfrutta il principio per cui attendendo un periodo di tempo breve aumenta la possibilità che un container venga assegnato al nodo a cui è stato inviato; questo aumenta l'efficienza del cluster 
+
+h) In-Mapper combining. Dove viene effettuata l'operazione di "emit" nello stateful in-mapper combiner
+
+-> Nel in-mapper combining viene effettuata un'operazione di riduzione direttamente nel mapper. L'operazione di emit nello stateful viene effettuata nella funzione "close" ossia la funzione di cleanup
+
+i) Fault Tolerance
+
+-> Task failure: viene lanciata un'eccezione, viene eseguite un'uscita dalla JVM, Task pendenti
+
+Application master failure: heartbeat periodico al resource manager; qualora viene rilevata una failure viene creata una nuova istanza in un nuovo container; il client chiede al master il nuovo indirizzo 
+
+Node manager failure: heartbeat periodico al resource manager; dopo 10 minuti di nessun contatto il resource manager rimuove il container dal pool; tutte le task che erano in esecuzione su tale container vengono marcate come failed
+
+Resource manager failure: situazione molto grave. Per garantire HA bisogna averne più istanze.
+
+l) Pairs and Stripes
+
+-> Problema: data un input di dimensione N generare una matrice N x N
+Soluzione: Pairs che genera O(N^2) di dati in O(1) spazio oppure Stripes che genera O(N) dati in O(N) spazio. Pairs usa un doppio ciclo for nel mapper senza un associative array
+
+m) Quali caratteristiche aggiunge Hadoop a quelle del functional programming
+
+o) Cosa sono i metodi di setup e clenup? Esempio di dove abbiamo usato setup?
+
+p) Differenze fra Narrow e Wide Transformations in Spark
+
+q) Operazioni di lettura relative al HDFS con schema davanti
+
+r) Persistenza nel RDD Spark
+
+s) Executors in Spark
+
+t) Differenza fra Transformations e Stage in Spark
