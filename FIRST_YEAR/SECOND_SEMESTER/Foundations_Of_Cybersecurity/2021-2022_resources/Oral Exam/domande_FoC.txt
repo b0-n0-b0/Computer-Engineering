@@ -1,0 +1,101 @@
+Ecco una revisione più accurata dell'elenco, raggruppando tutte le domande e assicurandomi che nessuna sia stata trascurata:
+
+**Shannon**
+1. teorema di Shannon - Cifrario perfetto + dimostrazione (x5) OK
+2. Shannon’s definition of perfect cipher (x5) OK
+3. aggiunta: unconditional security e computational security
+
+**OTP**
+definizione, caratteristiche e problematiche
+- Stream ciphers (how it's different from a OTP)
+- Discuss some RNG (ex. LFSR), how can we use block ciphers to make a stream cipher (OFB)
+
+**RNG: proprietà per la sicurezza**
+1. cifrari a caratteri: approssimazione block cipher, caratteristiche che deve avere un PRG per essere sicuro; 
+2. LFSR: predicibile (x1)
+
+**DES, 2-DES e 3-DES**
+1. cifrario DES quando si usa? per quale motivo il 3DES è sicuro e la 2DES no? complessità di storage? complessità sui dati? trascurabile quella sui dati. se usassi 4DES? why not 4DES, 5DES...,  (x2) [2DES: Decryption step is O(2^k) since we need to find all the false keys]
+2. DES, 2-DES e 3-DES: quanto conviene? (x2)
+3. Cifratura multipla (2E, 3DES): quanto conviene? (x1)
+4. can we use ME in AES (yes but it's useless)
+
+
+**Cifrari a blocchi ed Encryption modes: CBC, ECB, OFB e CTR**
+1. CBC (x10)
+2. ECB (x11)
+3. differenze CBC/ECB (x10)
+4. CBC and error propagation (x10)
+5. Argue whether CBC can be used with public key encryption schemes (x10)
+6. schema modalità CBC (x10)
+7. Block cipher: per costruire cifrario a caratteri, modalità -> OFB, CFB, CTR; (dimostrazione che OFB non può essere un cifrario perfetto NON SPIEGATO) (x10)
+8. Block cipher: costruzione cifrario perfetto, mostrare che non è possibile in pratica (permutazioni...); che permutazione implementa un cifrario? (x10)
+9. Da Block Cipher a stream cipher, Encryption modes (x10)
+10. CTR
+11. Padding in block ciphers (why use PKCS5 and not a specific byte value repeated multiple times to pad)
+12. Another way to pad in block ciphers (CTS), explain how it works
+13. ECB e CBC, e chiedeva di spiegare il dictionary attack nel ECB
+14. si può usare CBC con cifrari asimmetrici? (sì
+15. Block cipher, perché dimensione blocco almeno (16*4?) bit?
+16. Da cosa dipende la dimensione del dizionario nel dictionary attack (da 2^n)
+17. perfezione di un cifrario a blocchi. cosa mi serve per determinare che sia perfetto?
+   Ip: dim blocco 128 e dim chiave 128 generata randomicamente, questo cifrario può essere perfetto oppure no?
+		NO: per essere perfetto dovrebbe realizzare tutte le permutazioni 2^N, numero di chiavi uguali a quello di tutte le possibili permutazioni.
+
+**RSA, key-generation, Problema RSA-Plain + soluzioni, decryption e encryption**
+1. Sicurezza RSA + perché l'algoritmo base non è sicuro (x6)
+2. RSA key key-generation (x6)
+3. RSA scolastico (rsa plain): perché non si usa in pratica (x6)
+4. RSA encryption and decryption performance improvements (x6)
+	**Square and multiply**
+	1. a^x mod n (multiply, generalizzazione) (x1)
+	2. parametro "e" in RSA (?) come si determina, a^x, square&multiply (esponente deve contenere il minor numero di 1-calcolo combinatorio(?)) (x1)
+
+**Diffie-Hellman, Operazioni su Zp* e Man in the middle problem**
+1. Diffie-hellman + perché si lavora in un sottogruppo di Zp* (x4)
+2. Protocollo Diffie-Hellman, come funziona? Si descriva il suo funzionamento e come stabilire i parametri necessari (x4) g deve essere una permutazione su Zp, deve generare tutti i valori, a e b invece devono essere grndi perchè devono permettere a g^a di superare p altrimenti sarebbe facilmente fattorizzabile tramite la bruteforce) Noi in realtà non si va mai ad usare DH in Zp* ma lo applichiamo in un suo sottoinsieme, come mai? Non dovrebbe diminuire la sicurezza? (Pohlig-Hellman, con complessità o(log|g|)) 
+3. Diffie-hellman (per scambio di chiavi) (x4)
+4. Man-in-the-middle Attack in Diffie-hellman (x4)
+5. Elgamal Encryption scheme
+6. perché ritenuto rivoluzionario? non prevedeva che A e B condividessero un segreto a priori, quindi no segreti a lungo termine  OK
+
+**DLP sulle curve ellittiche**
+1. DLP non generici, Zp*, vantaggio di passare alle curve ellittiche? (x1)
+2. ECDLP per le curve ellittiche e algoritmi per risoverlo (index calcolus e pohling hellmann)
+
+**Hash functions: 3-proprietà, Merkle-Damgaard scheme, funzioni di compressione, guessing attack, birthday attack**
+1. Proprietà di una funzione Hash + attacchi + Merkle Damgard (Concetto generale + schema se si ricorda) (x7) Gli premeva che gli dicessi la particolare proprietà di h.
+2. Funzioni hash (3 proprietà, attacchi alle varie proprietà) (x7)
+3. Proprietà funzioni Hash, guessing attack (funzionamento e complessità) (x7)
+4. Guessing attack (x7)
+5. Birthday attack (paradosso del compleanno) (x7)
+6. schema di Merkle-Damgard (hash più grandi da hash piccoli(?)), Come si realizza la funzione h(piccolo) (x7)
+7. Definizione di funzione Hash sicura, quali proprietà deve possedere? Imposta e calcola la probabilità di un Birthday attack, con la complessità. Schema Merkle-Daamgard. (x7)
+
+**MAC e HMAC**
+1. MAC: costruzione HMAC (x1)
+
+**Perfect Forward Secrecy, problemi e vantaggi**
+1. Perfect forward secrecy (Definizione + esempio di come si può ottenere) (x3)
+2. Perfect forward secrecy (x3)
+3. problema della perfect forward secrecy? (x3)
+
+**Certificati: Informazioni minime, operazioni di verifica**
+1. Quali sono le informazioni minime che ci aspettiamo di trovare dentro un certificato? quali sono i controlli da fare prima di utilizzarlo? (x2) (Controllo sull'integrità poi check sullo stato revocato/valido)
+2. Certificates (including OCSP, CRL and Cross certification) (x2)
+3. When is a certificate considered valid? (x2)
+4. Scambio di messaggi CA-Utente che effettuano il controllo di validità (M1 A->CA: timestampA||idB, M2 CA->A: {timestampA, RESPONSE}Kprivca
+ il timestamp inviato da A svincola dalla sincronizzazione degli clock)	
+
+**Dictionary Attack e Rainbow-Table Attack**
+1. Dictionary attack (è un kpa) (x1)
+2. Da cosa dipende la dimensione del dizionario nel dictionary attack (da 2^n) (x1)
+
+**Varie**
+5. Discuss about authenticated encryption schemes and argue about their security (x1)
+6. Kerberos (x1)
+7. Kerberos delegation (proxy and forwardable tickets) (x1)
+8. Ci sono un server S e un client C che condividono una password P. C conosce la public key del server. Scrivere un protocollo per lo scambio di una chiave simmetrica tra le due parti garantendo Key authentication e confirmation.
+(Non si poteva usare un certificato per il client)
+9. ssl, schema generale della comunicazione tra client e server
+
