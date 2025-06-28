@@ -1,0 +1,119 @@
+I TRANCHE
+
+- vettore dei tempi + dimostrazione OK [Tempo:
+
+- Wave algorithm [Tempo: 7 minuti]
+
+- Java servlet [Tempo: 11 minuti]
+
+- Garbage collection : confronto tra standalone e distribuito [Tempo: 11 minuti] 
+	markAndSweep vs ReferenceCounting -> come adattarli a sistemi distribuiti  [interleaved, riguarda oggetti remoti tenuti ROT]
+
+II TRANCHE
+
+- What are Java Futures, what are they for, what's the advantage in a concurrent setup [Tempo: 16 minuti] [implements Executor, call throws Exception, Future è thread safe]
+
+- JSP. What are they used for, processing of a JSP, relation of a JSP with a servlet [Tempo: 4 minuti]
+
+- What is OTP. What is a gen_server? What would you use it for? What are callbacks? <--- MANCANTE 
+
+- Vector timestamps. What are their uses, how do you compare two vector timestamps. [Tempo: 14 minuti] [ts(m) <-- Tv(e) con e=send(m)]
+
+- What is RPC and what is RMI? When are they used? Explain the differences, describe the architecture of a system that uses RPC, how are parameters passed. Remote references in RMI [Tempo: 15 minuti] [comunicazione diretta, CORBA è un middleware, approcci thread]
+
+- Wave algorithms
+
+- How does the JVM organize the memory in a multithreaded contest [Tempo: 8 minuti] [Native method stack: esegue codice non Java, nel frame sono presenti array di variabili locali, operandi e rif al r.c.p.]
+
+- Tri-color marking algorithm
+
+- Distributed garbage collection in Java
+
+- Synchronization of physical clocks, general principles and the Cristian's algorithm [Tempo: 7 minuti]
+
+- Concept of logical clock, lamport timestamps, vector timestamps, differences and properties [Tempo: 15 minuti]
+
+- The bully's algorithm [Tempo: 10 minuti] [complessità temporale O(n^2) nel caso peggiore perché servono più round]
+
+- EJB, definitions and lifecycles [Temo: 8 minuti] [Riutilizzabilità, Java Message Service, incapusla la business logic]
+
+- What is the difference between big web services and rest web services. [Tempo: 3 minuti] [Rest uniform interface]
+
+- about the executor for thread pooling and the Callable interface.
+
+- How Java handles Memory at runtime (method area, heap, stack area)
+
+- About servlets, jsp, Java beans.
+
+
+III TRANCHE
+
+Executor
+
+IV TRANCHE
+
+- Lamport timestamp. cosa sono, perchè sono utili, come vengono usati. Definisci cos'è un "evento" in questo contesto. (con tanto di disegno e descrizione di ogni cosa sul disegno: cosa indicano i punti e cosa indicano le frecce)
+	un uso pratico del Lamport_ts ?
+
+- com'è organizzata la memoria della JVM? cosa accade quando un thread chiama una funzione?
+	How can you know that a thread reached a certain point in his execution? you need a special register: the program counter, ne avremo uno per thread.
+	cos'è la memoria heap, a cosa serve? quali sono le policy?
+	quando viene istanziato un oggetto, come puoi sapere quanto spazio questo occuperà? where is kept the code associated with the method? nella "method area" che contiene i metodi delle classi e non solo (non ho ben capito se contiene anche i campi delle classi)
+
+- class loading in JVM. che differenze sono state aggiunte per le applicazione distribuite? [Tempo: 3.30 min]
+
+- EJB e come vengono gestiti dall'Application Server, quali sono i tipi e come viene gestito il lifecycle
+
+- Concorrenza, legge di Amdahl, grafico al variare di n. Quali sono i casi in cui all'aumentare di n la curva diminuisce. [Tempo: 5 min]
+
+- Garbage collection da locale a distribuita.
+
+- Network Time Protocol [Tempo: 5 min]
+
+- Class Loading in Java e come cambia quando abbiamo oggetti remoti.
+
+- Come viene gestita la memoria della JVM, quali sono le problematiche associate. 
+
+- Garbage collection come viene fatto in lcoale. Come viene implementato in Java.
+
+- Algoritmi distribuiti: Rikart-Agrawala [Tempo: 14 min] [Spanning tree]
+
+- Algoritmi distribuiti: Leader Election in un contesto in cui ci possono essere dei fault.
+
+- Come sincronizzare il clock di un sistema distribuito? INTERNAMENTE
+
+V TRANCHE
+
+- Incompleta: Dove posso essere costruiti questi “prodotti” già pronti?
+    - Abbiamo bisogno di una istanza di executor service, richiamiamo un metodo che crei questa istanza (factory method), restituiscono un’istanza a partire da un metodo.
+- Se io sono su una rete locale e devo sincronizzare i clock dei singoli nodi, come posso fare?
+    - vari protocolli:
+    - La richiesta specifica è che siano tra di loro sincronizzati(secondo me si potrebbe avere un server nella rete locale)
+    - Algoritmo di Berkley (?)
+- Quale problema risolve l’algo di Berkley?
+  
+- Descriverlo approfonditamente
+ - Ora ci sono dei problemi, io ottengo una risposta che corrisponde al valore del clock nel momento in cui il messaggio viene ricevuto, questo non considera l’overhead. Quindi il master non ottiene per forza un valore accurato.
+- Perchè il server centrale non invia esattamente il valore ma invia l’offset?
+ - facciamo un passo indietro, il master fa questa lettura inviando e ricevendo messaggi.
+    - Ci sono delle tecniche per il management della latency (Christian Algorithm)
+    - Utilizza il RTT
+    - Supponiamo che l’overhead per l’invio e la ricezione siano gli stessi
+- In pratica, quale è il massimo dell’errore che posso permettere nel sincronizzare i clock?
+    - L’errore massimo è nel caso in cui un invio è immediato e tutto il RTT è dovuto all’invio/ricezione del secondo pacchetto, quindi il massimo errore è RTT/2
+- Se un programma Java dobbiamo caricare una classe, come avviene il caricamento e quando viene fuori questo problemi?
+    - Avviene tramite il ClassLoader
+    - Che delegherà la responsabilità ad un altro class loader in maniera gerarchica
+- Perchè sono 3? Non basterebbe averne 1?
+    - Il comportamento è diverso, perchè devono trovare il file .class da utilizzare
+- Perchè è un problema trovare i file .class?
+- Ho due classi, la classe paperino (scritta da me) e la classe String (del sys), c’è qualcosa di diverso?
+- Dove cerca il sistema per il file .class?
+  
+- Mentre la classe string dove sta?
+
+- Quando ho un programma distribuito come posso comportarmi?
+
+- I basic ClassLoader possono farlo?
+
+- Come è gestita la memoria in JVM

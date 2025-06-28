@@ -1,0 +1,88 @@
+EMOTION BASED MUSIC SELECTION
+- Application => raw inputs:
+  (1) *helmet => UUID, EEG-data;
+  (2) calendar => UUID, activity (sport, meditation, work, home, relax);
+  (3) genre => UUID, genre(pop, classical, rock, disco, workout);
+- Output:
+  (4) labels => UUID, emotion(focused, relaxed, excited);
+- Features (net input) 
+  (a) PSD alpha band
+  (b) PSD beta band
+  (c) PSD tetha band
+  (d) PSD delta band
+  (e) activity + small scatter
+  (f) genre + small scatter
+
+BRAIN-BASED WHEELCHAIR CONTROL
+- Application => raw inputs:
+  (1) *helmet => UUID, EEG-data;
+  (2) calendar => UUID, activity(shopping, sport, cooking, relax, gaming);
+  (3) environment => UUID, environment(slippery, plain, slope, house, track);
+- Output:
+  (4) labels => UUID, movements(move, turn left, turn right).
+- Features (net input)
+  (a) PSD alpha band
+  (b) PSD beta band
+  (c) PSD tetha band
+  (d) PSD delta band
+  (e) activity + small scatter
+  (f) environment + small scatter
+
+PREDICTIVE MAINTENANCE
+- Application => raw inputs:
+  (1) *vibrationSensor => UUID, vibrationTimeSeries
+  (2) testEnvironment => UUID, testingPhase(alpha, beta, in-house, deployment, maintenance)
+  (3) machineManagementSys => UUID, load&SpeedType(heavy, regular, fast, slow)
+- Output:
+  (4) labels => UUID, breakageRiskLevel(normal, moderate, high)
+- Features (net input)
+  (a) Maximum vibrationTimeSeries
+  (b) Median vibrationTimeSeries
+  (c) Skeweness vibrationTimeSeries
+  (d) Mean Absolute Deviation vibrationTimeSeries
+  (e) testingPhase + small scatter
+  (f) load&speedType + small scatter
+
+ANOMALY DETECTION IN MANUFACTURING
+- Application => raw inputs:
+  (1) *powerManagementSys => UUID, powerComsumptionTimeSeries
+  (2) productionManagementSys => UUID, tissueProduct(towel, facial, napkins, handerchiefs, toilet)
+  (3) machineManagementSys => UUID, load&SpeedType(heavy, regular, fast, slow)
+- Output:
+  (4) labels => UUID, anomalous(true, false)
+- Features (net input)
+  (a) Maximum powerComsumptionTimeSeries
+  (b) Median powerComsumptionTimeSeries
+  (c) Skeweness powerComsumptionTimeSeries
+  (d) Mean Absolute Deviation powerComsumptionTimeSeries
+  (e) tissueProduct + small scatter
+  (f) load&speedType + small scatter
+
+SECURE POS
+- Application => raw inputs:
+  (1) *transactionCloud => UUID, transactionTimestamp&AmountSequence (timestamp,amount)
+  (2) *networkMonitor => UUID, transactionEndPointSequence(targetIP, destIP)
+  (3) localizationSys => UUID, location (longitude|latitude)
+- Output:
+  (4) labels => UUID, attackRiskLevel (normal, moderate, high)
+- Features (net input)
+  (a) Mean absolute differencing transaction timestamps
+  (b) Mean absolute differencing transaction amount
+  (c) Median longitude|latitude
+  (d) Median targetIP
+  (e) Median destIP 
+
+MOBILITY BEHAVIOR MONITORING
+- Application => raw inputs:
+  (1) *smartShoeSensors => UUID, pressureTimeSeries
+  (2) calendar => UUID, activity(shopping, sport, cooking, gaming);
+  (3) environment => UUID, environment(slippery, plain, slope, house, track);
+- Output:
+  (4) labels => UUID, anomalous(regular, anomalous)
+- Features (net input)
+  (a) Maximum pressureTimeSeries
+  (b) Minimum pressureTimeSeries
+  (c) Median pressureTimeSeries
+  (d) Mean Absolute Deviation pressureTimeSeries
+  (e) activity + small scatter
+  (f) environment + small scatter

@@ -1,0 +1,23 @@
+sul columnar, sul columnar c è sempre. Ti da l UML con relazione 1 a n (a lui aveva dato la stessa cosa ma col document)
+
+il primo esercizio che vedi: puo essere fatto con document embedding  linking, dipende dai casi: se devi avere tutte le informazioni con le query è meglio l'embedding perché è denormalizzato, non devi fare join però si puo usare anche il linking
+
+seconda: 2 metodi da vedere 
+
+di solito sono quelli delle slide
+
+usciti a lui: esempio quando c è il keyvalue, ma chiesto col document, traduce relazione 1 a m (impiegati ordini) ma col document, ti dava le due tabelle e dovevi definire le query e fare il design del document db in base alle query che hai definito
+esercizio su un database, document o key o graph(piu raro)
+
+altra domanda: causal consistency
+altra: anti entropy process (del columnar)
+
+vanno visti tutte le trasformazioni di 1 a m in tutti i DB
+sui key value: implementare 1 a m
+columnar: relazioni 1 a m e n to n
+
+suo ragionamento sull esercizio: definire query (query dove ho tutte devo ottenere tutte le informazioni), faccio document embedding cosi in una collezione ho tutto
+sul columnar in genere robe di statistiche, lavorare sulle colonne
+oppure: date queste query che database userei? ti da tabelle, se devi fare spesso join usi il document embedding nel document, se devi fare la media usi il columnar(operazioni che riguardano piu righe ma una sola colonna)
+
+disegni devi farli uguali alle slide

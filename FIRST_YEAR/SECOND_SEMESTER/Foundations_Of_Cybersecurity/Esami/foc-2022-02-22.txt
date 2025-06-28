@@ -1,0 +1,46 @@
+ESERCIZIO 1
+Alice and Bob have to choose an encryption mode between CTR and CBC (both modes require an IV that is transmitted in the clear). They know the adversary is able to intercept and change messages exchanged between them. They also know that for some messages the adversary knows the first plaintext block M1 and wants to replace it with another block of his choice, namely A1.
+
+1) Does CTR make it possible to perform such an attack? 
+2) Does CBC make it possible to perform such an attack? 
+
+SOLUTION
+========
+
+CTR. The attack is possible. Let C1 = M1 xor Z1, where Z1 = E(k, IV+1). The attack consists in the following actions:
+1) Intercept the message
+2) Compute Z1 = C1 xor M1. 
+3) Replace C1 by C1' = A1 xor Z1 = C1 xor (M1 xor A1)
+4) Forward the modified message.
+
+CBC. The attack is possible. From the CBC definition, let C1 = E(k, M1 xor IV) and M1 = D(k, C1) xor IV. It follows that D(k, C1) = M1 xor IV (i). The adversary may replace M1 with A1 by changing IV into IV' so that A1 = D(k, C1) xor IV'. Therefore, by exploiting (i), A1 = M1 xor IV xor IV' and thus IV' = A1 xor M1 xor IV. The attack consists in the following actions:
+1) Intercept the message
+2) Compute IV' = A1 xor M1 xor IV
+3) Replace IV by IV'
+4) Forward the modified message
+
+ESERCIZIO 2
+
+Given the two protocols P1 and P2 with 
+P1: E(k1, x||H(k2, x)), where E() is a symmetric cipher
+P2: x, E(pubK, H(x)), where E() is an asymmetric cipher
+
+state whether they, respectively, satisfy the following security services:
+• confidentiality
+• integrity
+• non-repudiation 
+
+SOLUTION 
+========
+
+Protocol P1
+----------- 
+Confidentiality: YES, guaranteed by the cipher
+Integrity: YES, guaranteed by the hashing and cipher.
+Non-repudiation: NO, both parties can claim the other party has created the message.
+
+Protocol P2
+-----------
+Confidentiality: NO, message x is in the cleartext form.
+Integrity: NO, an adversary can replace x with a message x' of his choice, compute the hash and the encryption.
+Non-repudiation: NO, anybody can create the message.
