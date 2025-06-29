@@ -1,0 +1,246 @@
+SYMMETRIC ENCRYPTION
+-problema generico
+-modello cifratura simmetrica
+-definizione di cipher
+	-proprietà di correttezza
+	-definizione informale di sicurezza
+-criptoanalisi
+	-monoalphabetic cipher
+-3 tipi di attacco e caratteristiche
+	-classificazione degli attacchi
+	-complessità degli attacchi
+-STO
+-massima di kerchoff
+
+PERFECT CIPHER
+-verso un cipher perfetto (generalizzazione di sicurezza informale)
+-descrizione in termini probabilistici
+-perfetta segretezza informale (termini probabilistici)
+-perfetta segretezza di Shannon e teorema [CN] con dimostrazione per assurdo
+[non fatte]
+-postulato
+-unconditional security
+-perfetta indistinguibilità
+
+RING
+-definizione
+-proprietà
+
+STREAM CIPHER
+-One-Time Pad (OTP-Vernam Cipher)
+	-definizione
+	-teorema della perfetta segretezza con dimostrazione
+	-pro e contro
+	-rendere l'OTP pratica
+-Teorema e dimostrazione(n=1) che lo XOR è una buona encryption function, cosa significa
+-definizione di malleabilità
+-definizione di computational security e impredicibilità(con problema del prefisso)
+-stato dell'arte degli stream cipher
+	-802.11b WiFi
+	-Microsoft PPTP
+-Linear Feedback Shift Register
+	-schema
+	-pro e contro (con teorema della massima lunghezza)
+	-known plaintext attack
+-Content Scrambling System
+
+RANDOM BIT GENERATORS
+-definizione e tipologie (TRGB, PRGB, CSPRGB)
+-test statistici
+
+BLOCK CIPHER
+-definizione
+-spiegare permutazioni
+-blocchi pratici
+-exahustive key search attack
+-multiple encryption(two-time encryption, 2DES, 3DES & key whitening)
+-DES(data encryption standard)
+	-struttura
+	-feistel network
+	-struttura interna(function f, Sbox)
+	-key scheduling
+-Encryption modes
+	-Electronic CodeBook (ECB)
+	-Cipher Block Chaining (CBC)
+	-Output FeedBack mode (OFB)
+	-Cipher FeedBack mode (CFB)
+	-CounTeR mode (CTR)
+-Padding
+	-definizione
+	-Padding Oracle Attack
+-Ciphertext stealing
+-Chosen Plaintext Attack
+-XTS-AES Mode (Tweakable Block Ciphers)
+-AES(advanced encryption standard)
+	-definizione
+	-struttura
+	-GF(galois field)
+	-sicurezza
+	-performance
+
+CRITTOGRAFIA A CHIAVE PUBBLICA
+-definizione
+-cipher perfetto PKE
+-protocollo basico
+-one way function
+-inviluppo digitale
+-security level
+-key authentication
+-plaintext randomization
+-Criptosistema RSA
+	-definizione
+	-algoritmo di calcolo della chiave privata e pubblica
+	-encryption/decryption e dimostrazione
+	-performance(calcolo di e, trovare p e q, calcolare la modular exponentiation, velocizzarla con il CRT)
+	-sicurezza
+	-RSA in pratica
+	-attacchi possibili(adaptive chosen ciphertext, common modulus, small message, low exponent)
+
+KEY ESTABLISHMENT
+-definizione
+-come stabilire chiave temporanea
+	-protocolli di trasporto chiavi(one-pass key transport, key transport with challenge response)
+	-key agreement
+-n^2 distribution problem
+-Key Distribution Center(KDC)
+	-basic Exchange protocol with KDC
+	-problemi di sicurezza
+-Diffie Hellmann Key Exchange(DHKE)
+	-protocol
+	-sicurezza
+	-performance
+	-non interactivity
+	-attacco MIM
+-DLP Generalizzato
+	-teorema sottogruppo ciclico
+	-teorema abelian cyclic finite group
+-Criptosistema Elgamal
+	-definizione
+	-performance
+	-sicurezza
+
+BASI DI CRIPTOSISTEMI A CURVE ELLITTICHE
+-definizione
+-operazioni(addizione, inverso)
+-2 teoremi sulla costruzione delle curve ellittiche
+-elliptic curve DLP
+-diffie hellmann con curve ellittiche
+	-protocollo
+	-sicurezza
+
+FUNZIONI HASH
+-definizione
+-proprietà generiche
+-3 proprietà di sicurezza(preimage resistance, 2nd preimage resistance, collision resistance)
+-2 tipologie di hash function(OWHF, CRHF)
+-attacchi
+	-2 tipi di forgery
+	-analytical attack
+	-black box attack(guessing attack, birthday attack)
+-hash con block cipher
+-usi principali della funzione hash
+-costruire una funzione hash(merkle-demgard scheme)
+	-teorema C.R.
+
+MESSAGE AUTHENTICATION CODE
+-definizione
+-proprietà
+-sicurezza e implicazioni
+-MAC in pratica(SSL e spiegazione, IPSec e spiegazione, SSH)
+-Galois Counter Mode
+-costruzione di un MAC(HMAC, CBC-MAC, Cipher-based Message Authentication MAC o CMC)
+-padding
+	-timing attack
+
+DIGITAL SIGNATURE
+-problema
+-protocollo
+-authentication vs non-repudiation
+-sicurezza
+	-trusted timestamp service
+-comparazione con il MAC
+-RSA Signature Scheme
+	-standardised RSA Probabilistic Signature Scheme
+-signature con hash function
+	-hash and sign paradigm
+	-teorema sulla sicurezza di un digital signature scheme
+-RSA-Based Blind Signature
+	-Digital Cash [non fatto]
+		-problema e soluzioni del double spending
+[non fatti]
+-Elgamal Signature Scheme
+	-Existential Forgery attack
+-Digital Signature Algorithm(DSA)
+
+CERTIFICATI
+-definizione
+-protocolli(user-provided key, CA-genereted key)
+-obbligazioni della CA
+-Trust Delegation
+-Assurance
+-backup di una chiave privata
+-certificati revocati e scaduti
+	-definizione
+	-protocollo di controllo del certificato
+-X509 standard
+-trust models(centralized, centralized with subordinate, cross certification, browser model)
+
+PERFECT FORWARD SECRECY
+-definizione
+-Pre-shared key-based key Exchange
+-Ephemeral Diffie-Hellmann
+-Public key encryption key Exchange
+-Ephemeral RSA
+
+SECURE SOCKET LAYER(SSL)
+-definizione
+-connessione vs sessione
+-record protocol
+-handshake protocol
+	-schema per autenticazione del server
+	-conclusion round
+	-sicurezza
+	-autenticazione del client
+-cipher suite
+-insidie e attacchi
+	-attacco all'implementazione
+	-uso negli ecommerce
+	-secure electronic transaction
+	-pro e contro
+
+ANALISI E DESIGN DI PROTOCOLLI CRIPTOGRAFICI
+-Ban Logic
+-Formalismo
+-3 postulati principali(message meaning rule, nounce verification rule, juristiction rule) [non fatti]
+-Needham-Schroeder protocol(reale e idelizzato) e analisi degli obiettivi(key establishment, key confirmation) [non fatta]
+-replay attack
+-protocollo SSL(vecchia versione)
+	-analisi
+	-soluzione al MIM
+-protocollo Otway-Rees[non fatto]
+	-reale
+	-idealizzato
+	-modificato
+	-analisi
+-altri 7 postulati secondari
+
+KERBEROS
+-definizione
+-protocollo e schema
+-4 proprietà
+-architettura completa
+-TGS e TGT
+-autenticazione e pre-autenticazione 
+-delegazione
+-realms
+
+MERKLE TREE
+
+ONE TIME PASSWORD
+
+PASSWORD STORAGE
+
+SIDE CHANNEL ATTACK
+
+
+  

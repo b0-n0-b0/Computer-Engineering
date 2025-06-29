@@ -1,0 +1,168 @@
+IPv6
+-motivazioni
+-benefici
+-struttura del pacchetto
+-tipi di NH (hop by hop extension header, routing head, fragment header)
+-Indirizzamento:
+	-categorie di indirizzi (unicast, anycast, Multicast) & assegnazione
+	-scope degli indirizzi e struttura
+	-notazione indirizzo IPv6	
+-ICMPv6
+	-funzioni
+	-esempi di message body
+	-Router Discovery
+	-stati degli IP nella SLAAC
+
+MPLS
+-enunciato del problema
+-FEC e IP routing riformulato
+-scope dei label & significato MPLS
+-Data Plane
+	-3 azioni di base e LSP
+	-header MPLS e posizionamento
+	-label stacking (tunnelling)
+	-partitioning e mapping nel concreto
+	-penultimate hop popping
+-Control Plane
+	-3 task di ogni LSR (binding FEC-Label, condivisione, combinazione per tabella)
+	-scope label (per interfaccia, per LSR)
+	-retention mode (liberal, conservative)
+	-binding condiviso da downstream (downstream on-demand, downstream unsolicited)
+	-come avviene la partizione in FEC? determina gli LSP --> User defined configuration, Automatic (indirizzi esterni/loopback PER)
+	-quando e chi effettua l'avvertimento del binding? determina chi ha il controllo sul setup degli LSP (ordered/Independent control)
+	-Label distribution (LDP, RSVP)
+
+Traffic Engineering
+-descrizione generale
+-guadagni e risparmi
+-scenari di applicazione (explicit routing, bandwidth requirements, priorità in caso di fallimenti)
+-requisiti (scegliere percorso che rispetti i vincoli e forzare il traffico per esso)
+	-ottimizzazione della metrica scalare + eliminazione percorsi che non rispettano i vincoli
+	-2 tipi di vincoli (performance e administrative)
+	-3 caratteristiche necessarie 
+		-link characterization [TEm, UB, MRB, AG]
+		-estensione dei protocolli [OSPF-TE Link-State --> opaque LSA type 10 & TE DB] 
+		-algoritmo vincolato [CSPF --> grafico potato (controllo link per link), on-demand, conosciuto solo agli edge router]
+		 	+ regole tie-breaking
+-RSVP-TE
+-Priorità degli LSP
+-Riottimizzazione
+-CSPF centralizzato Offline
+-CSPF centralizzato Online
+-Modellazione del sistema
+-Protection & Restoration
+
+{Ripasso OSPF}
+-LSA unità base di scambio informazioni tra router in OSPF
+-AS con e senza routing gerarchico
+-Tipi di LSA:
+	-Tipo 1 --> connettività tra router (router a cui è connesso un router)
+	-Tipo 3 --> distance vector, coppia (destinazione, costo) inviata da un ABR verso l'area interna [solo nel routing gerarchico]
+	-Tipo 5 --> inviata dai PER degli AS per permettere ai router interni di conoscere le destinazioni esterne raggiungibili da lui
+
+Segment Routing
+-definizione attraverso il traffic steering
+-3 operazioni di base (push, next, continue)
+-global and local segments
+-SR-MPLS
+-SR-MPLS Control plane
+	
+BGP
+-descrizione generale (inter-AS, relazioni di business, NRI, BGP Speaker, destination-based routing, EGP)
+-path vector routing 
+	-metrica per hop
+	-destinazioni
+	-modifiche artificiali
+-operazioni BGP (Open, Notification, KeepAlive, Update con dettagli)
+-tipologia di sessioni BGP
+-iBGP vs eBGP
+-iBGP motivazioni
+-Full Mesh
+-problema core routers
+-Path attribute dettagli (ORIGIN, AS_PATH, NEXT_HOP, MED, LOCAL_PREF)
+-se ho imparato da una ASBR interno una rotta e la considero la migliore, anche migliore di quella esterna che ho io, allora non la inoltrerò internamente perché lo scopriranno da soli, non posso inoltrare una rotta ricevuta dall'interno (LOCAL_PREF)
+
+INTERDOMAIN ROUTING
+-Route filtering per il traffico in transito
+	-Controllo del traffico inbound
+	-Controllo del traffico outbound
+-Route filtering per il traffico non in transito
+-BGP decision process
+	-definizione
+	-2 fasi
+	-descrizione del disegno
+	-aggregazione (facoltativa)
+	-export
+-internal BGP scalability
+	-RR
+	-gerarchia per problema di overhead
+	-VNF come RR
+	-2 attributi aggiuntivi
+	-problema del percorso migliore
+
+INTERNET ROUTING
+-prima del BGP
+-discussione sulla FIRT
+-ente per la distribuzione di IP e AS number
+	-caso 1 e caso 2
+-Business relationship (Customer-to-provider, peer-to-peer, sibling-to-sibling)
+-valley free property
+-IXP (Internet eXchange Point)
+-Internet Connectivity
+-Prospettiva geografica
+-Prefix Hijacking
+
+VPN
+-corporate WAN
+-significato di VPN
+-VPN L3 vs VPN L2
+-virtual CE-CE links
+	-2 tipologie
+	-route peering indicano connessioni dirette viste da OSPF nel control plane
+	-solo trasporto di pacchetti
+	-se si utilizza IP allora IPsec e GRE
+	-indipendentemente dal livello si istanziano vP2P link
+	-pro & contro
+-CE-PE peering approach
+	-soluzione PE-based 
+	-indipendenza dalla full mesh e scambio di informazioni di routing
+	-limitazioni di questa soluzione (overlapping IP)
+	-soluzione nel dataplane
+	-soluzione con PE virtuali (VNF) ma impatto con IP forwarding
+	-soluzione finale con PE virtuali e MPLS (Cisco) --> provider network dedicata
+-BGP/MPLS VPN
+	-topologia di esempio
+	-VRF
+	-MP-BGP (nuovo attributo MP NLRI)
+	-AFI/SAFI --> VPN-IPv4
+	-come condividere gli update per lo stesso IP?
+		-Route Distinguisher (8 byte) integrato nel VPN-IP
+		-perché non è un identificatore di VPN?
+	-come decidere in quale VRF salvare l'update?
+		-Route Target (inserito nel BGP community attribute)
+	-forwarding nei core routers [dataplane] (MPLS --> LSP per ogni VRF e due tipi di label)
+	-Full Mesh vs Hub-and-Spoke
+	-Overlapping VPN
+
+VPN L2
+-ripasso della differenza con le precedenti
+-casi d'uso (astrazione del big switch per una WAN, connessione di datacenter-IaaS, Backhauling)
+-P2P (VPWS) vs MP2P (VPLS --> modello operazionale, data plane, management plane)
+-Ethernet VPN
+-VXLAN (operation, data plane, frame BUM)
+
+Segment Routing v6
+-cosa cambia da MPLS
+-SRv6 Network Programming 	
+	-SID = Locator + Function + ARGS
+	-Esempio (per capire il valore del locator)
+	-Vantaggio rispetto a MPLS
+
+Data Center Networks
+-descrizione generale datacenter
+-vecchia soluzione basata sull'aggregazione
+-DCN moderni (topologia Leaf&Spine)
+-CLOS Network
+-Leaf and Spine
+-Oversubscription ratio ed esempio
+-folded leaf and spine
