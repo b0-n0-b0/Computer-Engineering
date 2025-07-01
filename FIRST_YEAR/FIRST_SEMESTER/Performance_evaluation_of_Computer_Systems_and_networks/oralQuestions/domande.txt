@@ -1,0 +1,12 @@
+1)average arrival reate e mean arrival rate sono uguali? in particolare ho notato average come nome nel Burke's theorem
+2)nelle queueing network se l'arrivo è poisson allora anche l'uscita giusto?
+in quelle con feedback anche se l'ingresso non è poisson l'uscita ha product form quindi anch'essa è poisson (per il teorema di burke?)
+3) le product form indicano che il numero di processi in un SC è indipendente dall'altro in una QN o è valido solo se OJN (queste ammettono product form)
+4) se  non specificato nel testo le probabilità di routing sono indipendenti da come sono distribuiti i jobs nel sistema?
+5)esercizio queueing theory 14/06/2023 la mia soluzione potrebbe andare?
+6)negative offesets per sistemi a memoria finita
+7)uso nell'appello 20/09/2023 del CLT
+8) nell' appello 14/06/2023 se ho n variabili, n -> inf allora la cdf descresce con n e dunque assomiglia ad una step function
+9) 15/06/2022 è il teorema della probabilità totale?
+10)08/02/2023 perche tutti hanno la stessa probabilità?
+11)18/01/2023 quando lamba segnato è uguale al throughput? quando vale la little law?

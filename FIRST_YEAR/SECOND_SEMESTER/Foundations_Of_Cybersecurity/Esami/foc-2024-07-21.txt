@@ -1,0 +1,2 @@
+TERZA
+pseudo risposta: una funzione con hash per fare check su file su un hard disk, in teoria dovresti usare funzione MD64 ma in realtà non era sicura, ha senso utilizzare SHA256 però prendendo soltanto i primi 80 bit dell hash, aveva senso? No non basta la collision resistance ma serve anche la second pre image perché chi produce i file puo produrre una collisione (non pensato perché si parlava di protezione da attacchi)
