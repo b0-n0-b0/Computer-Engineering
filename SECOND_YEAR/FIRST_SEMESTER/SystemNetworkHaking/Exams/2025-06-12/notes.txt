@@ -1,0 +1,16 @@
+il bug consiste nel decrementare a prescindere freekeys nella createkey().
+
+in particolare, possiamo fare un underflow da -128 a 127 chiedendo la creazione di 128 chiavi dopo le 8 gratuite consentite.
+
+dopo aver fatto ciò, siamo in grado di scrivere ulteriori chiavi che andranno poi a sovrascrivere l'array di objects (che si trova immediatamente dopo in memoria)
+
+l'idea è quella di sovrascrivere gli elementi di objects, e poi chiamare la useobj. idealmente, la funzione chiamata sarà printflag() invece della foo() associata alla classe.
+
+non conosciamo l'indirizzo di printflag, ma solo il suo offset nella libreria usata per compilare, che è 0x11b9.
+
+Possiamo far puntare il vptr di un oggetto a una entry della GOT, e poi usare le chiamate virtuali per eseguire il contenuto di quella entry della GOT.
+
+L'obiettivo è quindi trovare l'indirizzo di base, trovare l'indirizzo di printflag come base+offset e assegnarla ad una entry di objects
+
+Ad esempio, `u0` corrisponde a objects[48] [0x30=48], scrivendo senza criterio avremo una segmentation fault, che suggerisce che ci troviamo sulla giusta strada
+
